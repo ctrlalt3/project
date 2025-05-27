@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Song {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(100)
+  artist    String   @db.VarChar(100)
+  year      Int
+}
+
+model Save {
+  id        Int      @id @default(autoincrement())
+  songId     Int
+  title     String   @db.VarChar(100)
+}
+
+
+
+// To insert a record, use:
+// INSERT INTO Song (title, artist, year)
+// VALUES 
+// ('Industrial Warfare', 'Toxic Machinery', 2023),
+// ('Techno Pulse', 'Maddix', 2023),
+// ('Dark Matter', 'Nico Moreno', 2023),
+// ('Bass Revolution', 'Basswell', 2023),
+// ('Neural Network', 'Fastam', 2023),
+// ('Void Runner', 'Azyr', 2023),
+// ('Underground Protocol', 'Luca Agnelli', 2023),
+// ('Shadow System', 'SNTS', 2023),
+// ('Digital Chaos', 'VENDEX', 2023),
+// ('Warehouse Anthem', 'Adrian Mills', 2023),
+// ('Acid Warrior', 'Amelie Lens', 2023),
+// ('Techno Force', 'Dhuna', 2023),
+// ('Machine Code', 'Toxic Machinery', 2023),
+// ('Bass Matrix', 'Maddix', 2023),
+// ('System Overload', 'Nico Moreno', 2023),
+// ('Dark Protocol', 'Basswell', 2023),
+// ('Circuit Breaker', 'Fastam', 2023),
+// ('Binary Storm', 'Azyr', 2023),
+// ('Neural Decay', 'Luca Agnelli', 2023),
+// ('Chrome Warrior', 'SNTS', 2023),
+// ('Cyber Force', 'VENDEX', 2023),
+// ('Tech Ritual', 'Adrian Mills', 2023),
+// ('Bass Protocol', 'Amelie Lens', 2023),
+// ('Digital Storm', 'Dhuna', 2023),
+// ('Matrix Runner', 'Toxic Machinery', 2023),
+// ('Dark Echo', 'Maddix', 2023),
+// ('Industrial Pulse', 'Nico Moreno', 2023),
+// ('Techno Matrix', 'Basswell', 2023),
+// ('Neural Force', 'Fastam', 2023),
+// ('Void Protocol', 'Azyr', 2023),
+// ('Underground System', 'Luca Agnelli', 2023),
+// ('Shadow Network', 'SNTS', 2023),
+// ('Digital Warfare', 'VENDEX', 2023),
+// ('Warehouse Protocol', 'Adrian Mills', 2023),
+// ('Acid Storm', 'Amelie Lens', 2023),
+// ('Techno System', 'Dhuna', 2023),
+// ('Machine Force', 'Toxic Machinery', 2023),
+// ('Bass Warrior', 'Maddix', 2023),
+// ('System Protocol', 'Nico Moreno', 2023),
+// ('Dark Matrix', 'Basswell', 2023);
+// createdAt and updatedAt will be automatically populated

@@ -1,56 +1,36 @@
-## EsseApp
-Especie de red social, donde puedes tanto como seguir usuarios, ver y comentar sus publicaciones y crear publicaciones, además de poder crear conversaciones con diversos usuarios
-##
-A continuación describe las tablas y sus relaciones utilizadas en la base de datos.
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Tablas Principales y Relaciones
+## Getting Started
 
-### 1. **Usuarios (`users` Table)**
-- Cada usuario tiene:
-  - `id`: Identificador único.
-  - `name`: Nombre del usuario.
-  - `email`: Correo electrónico.
-  - `password`: Contraseña encriptada.
-- Relaciones:
-  - Un usuario puede tener muchos `posts`.
-  - Un usuario puede tener muchos `comments` a través de sus posts.
-  - Un usuario puede participar en varias `conversations`.
-  - Un usuario puede seguir a otros usuarios (`following` relación).
+First, run the development server:
 
-### 2. **Publicaciones (`posts` Table)**
-- Cada post pertenece a un usuario (`user_id`).
-- Relaciones:
-  - Un post puede tener muchos `comments`.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-### 3. **Comentarios (`comments` Table)**
-- Cada comentario pertenece a un post (`post_id`).
-- Relaciones:
-  - Un comentario está asociado a un post.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### 4. **Conversaciones (`conversations` Table)**
-- Representa chats grupales o entre usuarios.
-- Relaciones:
-  - Una conversación puede tener múltiples `users`.
-  - Una conversación tiene múltiples `messages`.
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-### 5. **Mensajes (`messages` Table)**
-- Cada mensaje pertenece a una `conversation` (`conversation_id`).
-- Cada mensaje es enviado por un `user` (`user_id`).
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### 6. **Seguidores (`followers` Table - Tabla Pivot)**
-- Relación muchos a muchos entre `users`.
-- Un usuario puede seguir a otros usuarios y ser seguido por otros.
-- Implementado con `following()->attach($user->id);` en el seeder.
+## Learn More
 
-## Lógica en el Seeder
+To learn more about Next.js, take a look at the following resources:
 
-1. **Crea el usuario principal** `qwerty`.
-2. **Genera entre 2 y 5 posts para `qwerty`**, cada uno con entre 4 y 8 comentarios.
-3. **Crea 5 usuarios adicionales** y hace que `qwerty` siga entre 3 y 6 de ellos.
-4. **Crea 6 conversaciones** en total:
-   - Cada conversación tiene entre 2 y 4 usuarios aleatorios + `qwerty`.
-   - Se generan 5 mensajes por conversación, asignados alternadamente entre los participantes.
-5. **Cada usuario genera entre 2 y 5 posts con comentarios**.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Este esquema asegura una estructura de datos robusta y relaciones bien definidas en la base de datos.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
